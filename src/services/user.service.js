@@ -15,3 +15,10 @@ export const newUser = async (id, fullName, emailId, passWord) => {
   }
 };
 
+//service to get all user from the firestore database.
+export const getAllUsers = async () => {
+  const allData = await User.get();
+  //assigning the id's of users with the perticular user and returning the result
+  const data = allData.docs.map((value) => ({ id: value.id, ...value.data() })); 
+  return data;
+};
