@@ -24,3 +24,19 @@ export const newUser = async (req, res, next) => {
   }
 };
 
+//Controllers to get all users from the forestore database
+export const getAllUsers = async (req, res, next) => {
+  try {
+    const data = await UserService.getAllUsers();
+    res.status(HttpStatus.OK).json({
+      code: HttpStatus.OK,
+      data: data,
+      message: 'All users fetched successfully'
+    });
+  } catch (error) {
+    res.status(HttpStatus.BAD_REQUEST).json({
+      code: HttpStatus.BAD_REQUEST,
+      message: `${error}`
+    });
+  }
+};

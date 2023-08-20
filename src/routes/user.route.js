@@ -8,4 +8,7 @@ const router = express.Router();
 //route to create a new user
 router.post('', userController.newUser);
 
+//get all users from the firestore database
+router.get('', userController.getAllUsers);
+
 export default router;
