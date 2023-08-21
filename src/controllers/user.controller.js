@@ -24,7 +24,7 @@ export const newUser = async (req, res, next) => {
   }
 };
 
-//Controllers to get all users from the forestore database
+//Controller to get all users from the forestore database
 export const getAllUsers = async (req, res, next) => {
   try {
     const data = await UserService.getAllUsers();
@@ -32,6 +32,23 @@ export const getAllUsers = async (req, res, next) => {
       code: HttpStatus.OK,
       data: data,
       message: 'All users fetched successfully'
+    });
+  } catch (error) {
+    res.status(HttpStatus.BAD_REQUEST).json({
+      code: HttpStatus.BAD_REQUEST,
+      message: `${error}`
+    });
+  }
+};
+
+//Controller to update a single user by it's id
+export const updateUserById = async (req, res, next) => {
+  try {
+    const data = await UserService.updateUserById(req.params._id, req.body);
+    res.status(HttpStatus.ACCEPTED).json({
+      code: HttpStatus.ACCEPTED,
+      data: data,
+      message: 'User updated successfully'
     });
   } catch (error) {
     res.status(HttpStatus.BAD_REQUEST).json({
