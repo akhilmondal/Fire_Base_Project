@@ -2,3 +2,13 @@ info: ::1 - - [21/Aug/2023:02:13:22 +0000] "PUT /api/v1/users/47dJB38Oa5Ma6kW7WH
 
 info: ::1 - - [21/Aug/2023:02:13:38 +0000] "PUT /api/v1/users/47dJB38Oa5Ma6kW7WHOd HTTP/1.1" 202 175 "-" "PostmanRuntime/7.32.3"
 
+info: ::1 - - [21/Aug/2023:02:23:31 +0000] "PUT /api/v1/users/47dJB38Oa5Ma6kW7WHOd HTTP/1.1" 202 175 "-" "PostmanRuntime/7.32.3"
+
+info: ::1 - - [21/Aug/2023:02:23:45 +0000] "PUT /api/v1/users/47dJB38Oa5Ma6kW7WHOd HTTP/1.1" 202 175 "-" "PostmanRuntime/7.32.3"
+
+info: ::1 - - [21/Aug/2023:02:25:52 +0000] "DELETE /api/v1/users/47dJB38Oa5Ma6kW7WHOd HTTP/1.1" 200 60 "-" "PostmanRuntime/7.32.3"
+
+info: ::1 - - [21/Aug/2023:02:27:26 +0000] "DELETE /api/v1/users/47dJB38Oa5Ma6kW7WHOd HTTP/1.1" 200 60 "-" "PostmanRuntime/7.32.3"
+
+info: ::1 - - [21/Aug/2023:02:28:25 +0000] "DELETE /api/v1/users/47dJB38Oa5Ma6kW7WHOd HTTP/1.1" 200 60 "-" "PostmanRuntime/7.32.3"
+

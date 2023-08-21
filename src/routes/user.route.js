@@ -11,7 +11,10 @@ router.post('', UserController.newUser);
 //get all users from the firestore database
 router.get('', UserController.getAllUsers);
 
-//route to update a single user with it's id
+//route to update a single user with userId
 router.put('/:_id', UserController.updateUserById)
+
+//route to delete a single user with userId
+router.delete('/:_id', UserController.deleteUserById)
 
 export default router;

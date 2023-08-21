@@ -21,21 +21,27 @@ export const newUser = async (id, fullName, emailId, passWord) => {
 //service to get all user from the firestore database.
 export const getAllUsers = async () => {
   const allData = await User.get();
+
   //assigning the id's of users with the perticular user and returning the result.
-  const data = allData.docs.map((value) => ({ id: value.id, ...value.data() })); 
+  const data = allData.docs.map((value) => ({ id: value.id, ...value.data() }));
   return data;
 };
 
 //Service to update an user details by using user id.
-export const updateUserById = async (_id, body) => {
-
+export const updateUserById = async (id, body) => {
   //searching for the document with id and updating with new data of body.
-  await User.doc(_id).update(body)
+  await User.doc(id).update(body);
 
   //Fetching the whole data.
-  const docSnapshot = await User.doc(_id).get();
+  const docSnapshot = await User.doc(id).get();
 
   //formating it for a proper response.
   const updatedUser = userModel.getUserFromFirestore(docSnapshot);
   return updatedUser;
+};
+
+//Service to delete an user with userId
+export const deleteUserById = async (id) => {
+  await User.doc(id).delete(); //delete user with Id
+  return '';
 };
