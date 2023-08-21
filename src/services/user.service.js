@@ -6,8 +6,11 @@ export const newUser = async (id, fullName, emailId, passWord) => {
   try {
     const user = userModel.createUser(id, fullName, emailId, passWord);
     const data = await User.add(user.toFirestore());
-    //formating the response in proper way
+
+    //getting unformatted response from the firestore database
     const docSnapshot = await data.get();
+
+    //passing that whole data into the function to filter out only required data.
     const addedUser = userModel.getUserFromFirestore(docSnapshot);
     return addedUser;
   } catch (error) {
@@ -18,7 +21,21 @@ export const newUser = async (id, fullName, emailId, passWord) => {
 //service to get all user from the firestore database.
 export const getAllUsers = async () => {
   const allData = await User.get();
-  //assigning the id's of users with the perticular user and returning the result
+  //assigning the id's of users with the perticular user and returning the result.
   const data = allData.docs.map((value) => ({ id: value.id, ...value.data() })); 
   return data;
+};
+
+//Service to update an user details by using user id.
+export const updateUserById = async (_id, body) => {
+
+  //searching for the document with id and updating with new data of body.
+  await User.doc(_id).update(body)
+
+  //Fetching the whole data.
+  const docSnapshot = await User.doc(_id).get();
+
+  //formating it for a proper response.
+  const updatedUser = userModel.getUserFromFirestore(docSnapshot);
+  return updatedUser;
 };
