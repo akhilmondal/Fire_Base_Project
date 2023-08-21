@@ -57,3 +57,20 @@ export const updateUserById = async (req, res, next) => {
     });
   }
 };
+
+//Controller to delete an user with userId.
+export const deleteUserById = async (req, res, next) => {
+  try {
+    await UserService.deleteUserById(req.params._id);
+    res.status(HttpStatus.OK).json({
+      code: HttpStatus.OK,
+      data: [],
+      message: 'User deleted successfully'
+    });
+  } catch (error) {
+    res.status(HttpStatus.BAD_REQUEST).json({
+      code: HttpStatus.BAD_REQUEST,
+      message: `${error}`
+    });
+  }
+};
